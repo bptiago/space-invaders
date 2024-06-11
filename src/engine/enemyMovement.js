@@ -6,4 +6,5 @@ export const ENEMY_MOVEMENT = {
     defaultXVelocity: 1,
     defaultYVelocity: 1,
     defaultDownMovementTimer: 50,
+    defaultFireBulletTimer: 100,
 };

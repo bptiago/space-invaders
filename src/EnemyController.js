@@ -17,9 +17,12 @@ export default class EnemyController {
     xVelocity = 0;
     yVelocity = 0;
     downMovementTimer = ENEMY_MOVEMENT.defaultDownMovementTimer;
+    fireBulletTimer = ENEMY_MOVEMENT.defaultFireBulletTimer;
 
-    constructor(canvas) {
+    constructor(canvas, enemyBulletController, playerBulletController) {
         this.canvas = canvas;
+        this.enemyBulletController = enemyBulletController;
+        this.playerBulletController = playerBulletController;
         this.createEnemies();
     }
 
@@ -27,8 +30,35 @@ export default class EnemyController {
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Limpar o canvas antigo a cada novo frame
         this.decrementDownMovementTimer();
         this.updateMovementDirection();
+        this.bulletCollision();
         this.drawEnemies(ctx);
         this.resetDownMovementTimer();
+        this.fireBullet();
+    }
+
+    bulletCollision() {
+        this.enemyMap.forEach((row) => {
+            row.forEach((enemy, enemyIndex) => {
+                if (this.playerBulletController.collideWith(enemy)) {
+                    // Inimigo morre e deve ser tirado do jogo
+                    row.splice(enemyIndex, 1);
+                }
+            });
+        });
+
+        this.enemyMap = this.enemyMap.filter((row) => row.length > 0);
+    }
+
+    fireBullet() {
+        this.fireBulletTimer--;
+        if (this.fireBulletTimer <= 0) {
+            this.fireBulletTimer = ENEMY_MOVEMENT.defaultFireBulletTimer;
+            const allEnemies = this.enemyMap.flat();
+            const randomIndex = Math.floor(Math.random() * allEnemies.length);
+            const randomEnemy = allEnemies[randomIndex];
+            this.enemyBulletController.shoot(randomEnemy.x, randomEnemy.y, -3);
+            console.log(randomIndex);
+        }
     }
 
     decrementDownMovementTimer() {

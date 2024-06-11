@@ -13,6 +13,19 @@ export default class BulletController {
         // O som tem que vir aqui
     }
 
+    collideWith(sprite) {
+        const bulletCollidedIndex = this.bullets.findIndex((bullet) =>
+            bullet.collideWith(sprite)
+        );
+
+        if (bulletCollidedIndex >= 0) {
+            this.bullets.splice(bulletCollidedIndex, 1);
+            return this;
+        }
+
+        return false;
+    }
+
     shoot(x, y, velocity, bulletInterval = 0) {
         if (this.bulletInterval <= 0 && this.bullets.length < this.maxBullets) {
             const bullet = new Bullet(this.canvas, x, y, velocity, this.color);

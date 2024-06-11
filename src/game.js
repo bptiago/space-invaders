@@ -4,8 +4,13 @@ import Player from "./Player.js";
 
 const canvas = document.getElementById("canvas");
 
-const playerBulletController = new BulletController(canvas, 10, "red", true);
-const enemyController = new EnemyController(canvas);
+const playerBulletController = new BulletController(canvas, 8, "blue", true);
+const enemyBulletController = new BulletController(canvas, 4, "red", false);
+const enemyController = new EnemyController(
+    canvas,
+    enemyBulletController,
+    playerBulletController
+);
 const player = new Player(canvas, 2, playerBulletController);
 
 function game() {
@@ -27,6 +32,7 @@ function game() {
             enemyController.draw(ctx);
             player.draw(ctx);
             playerBulletController.draw(ctx);
+            enemyBulletController.draw(ctx);
         }
 
         lastFrameTime = time;
