@@ -27,11 +27,14 @@ export default class EnemyController {
         this.enemyKilledSound = new Audio("../assets/sounds/morte-inimigo.wav");
         this.enemyKilledSound.volume = 0.5;
 
+        this.background = new Image()
+        this.background.src = "../assets/graphics/SpaceInvaders_Background.png"
         this.createEnemies();
     }
 
     draw(ctx) {
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Limpar o canvas antigo a cada novo frame
+        ctx.drawImage(this.background, 0, 0, canvas.width, canvas.height);
         this.decrementDownMovementTimer();
         this.updateMovementDirection();
         this.bulletCollision();

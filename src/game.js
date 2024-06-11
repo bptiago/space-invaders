@@ -14,6 +14,8 @@ const enemyController = new EnemyController(
 const player = new Player(canvas, 2, playerBulletController);
 let isGameOver = false;
 let didWin = false;
+const background = new Image()
+background.src = "../assets/graphics/SpaceInvaders_Background.png"
 
 function game() {
   if (!canvas.getContext) {
@@ -47,6 +49,7 @@ function game() {
 function displayGameOver(ctx) {
     if (isGameOver){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
         let text = didWin ? "You Win" : "Game Over";
         let textOffset = didWin ? 3.5 : 5;
         
