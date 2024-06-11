@@ -23,6 +23,10 @@ export default class EnemyController {
         this.canvas = canvas;
         this.enemyBulletController = enemyBulletController;
         this.playerBulletController = playerBulletController;
+
+        this.enemyKilledSound = new Audio("../assets/sounds/morte-inimigo.wav");
+        this.enemyKilledSound.volume = 0.5;
+
         this.createEnemies();
     }
 
@@ -41,6 +45,8 @@ export default class EnemyController {
             row.forEach((enemy, enemyIndex) => {
                 if (this.playerBulletController.collideWith(enemy)) {
                     // Inimigo morre e deve ser tirado do jogo
+                    this.enemyKilledSound.currentTime = 0;
+                    this.enemyKilledSound.play();
                     row.splice(enemyIndex, 1);
                 }
             });

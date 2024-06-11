@@ -4,7 +4,7 @@ import Player from "./Player.js";
 
 const canvas = document.getElementById("canvas");
 
-const playerBulletController = new BulletController(canvas, 8, "blue", true);
+const playerBulletController = new BulletController(canvas, 5, "blue", true);
 const enemyBulletController = new BulletController(canvas, 4, "red", false);
 const enemyController = new EnemyController(
     canvas,

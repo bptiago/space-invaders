@@ -11,6 +11,8 @@ export default class BulletController {
         this.isSoundOn = isSoundOn;
 
         // O som tem que vir aqui
+        this.shootBulletSound = new Audio("../assets/sounds/atirar.wav");
+        this.shootBulletSound.volume = 0.5;
     }
 
     collideWith(sprite) {
@@ -29,6 +31,8 @@ export default class BulletController {
     shoot(x, y, velocity, bulletInterval = 0) {
         if (this.bulletInterval <= 0 && this.bullets.length < this.maxBullets) {
             const bullet = new Bullet(this.canvas, x, y, velocity, this.color);
+            this.shootBulletSound.currentTime = 0;
+            this.shootBulletSound.play();
             this.bullets.push(bullet);
             this.bulletInterval = bulletInterval;
         }
