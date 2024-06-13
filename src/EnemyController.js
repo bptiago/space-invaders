@@ -35,10 +35,13 @@ export default class EnemyController {
     draw(ctx) {
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Limpar o canvas antigo a cada novo frame
         ctx.drawImage(this.background, 0, 0, canvas.width, canvas.height);
+        this.drawEnemies(ctx);
+    }
+
+    update() {
         this.decrementDownMovementTimer();
         this.updateMovementDirection();
         this.bulletCollision();
-        this.drawEnemies(ctx);
         this.resetDownMovementTimer();
         this.fireBullet();
     }

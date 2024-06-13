@@ -1,11 +1,43 @@
-body {
-    display: flex;
-    justify-content: center;
-}
-
 #canvas {
     margin: 20px 20px;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     border: 1px solid black;
 }
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+}
+.btn-primary:hover {
+    background-color: #9c57eb;
+    border-color: #9c57eb;
+}
+.card {
+    background-color: #1f1f1f;
+    border: 1px solid #bb86fc;
+    color: #e0e0e0;
+    width: 300px;
+    border: none;
+}
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.modal-content {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 800px;
+}
+
