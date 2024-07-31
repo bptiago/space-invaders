@@ -27,8 +27,8 @@ export default class EnemyController {
         this.enemyKilledSound = new Audio("../assets/sounds/morte-inimigo.wav");
         this.enemyKilledSound.volume = 0.5;
 
-        this.background = new Image()
-        this.background.src = "../assets/graphics/SpaceInvaders_Background.png"
+        this.background = new Image();
+        this.background.src = "../assets/graphics/SpaceInvaders_Background.png";
         this.createEnemies();
     }
 
@@ -68,7 +68,7 @@ export default class EnemyController {
             const allEnemies = this.enemyMap.flat();
             const randomIndex = Math.floor(Math.random() * allEnemies.length);
             const randomEnemy = allEnemies[randomIndex];
-            this.enemyBulletController.shoot(randomEnemy.x, randomEnemy.y, -3);
+            this.enemyBulletController.shoot(randomEnemy.x, randomEnemy.y, -4);
             console.log(randomIndex);
         }
     }

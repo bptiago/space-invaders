@@ -22,7 +22,7 @@ export default class Player {
 
     draw(ctx) {
         if (this.isShootingKeyPressed) {
-            this.bulletController.shoot(this.x + this.width / 2, this.y, 4, 10);
+            this.bulletController.shoot(this.x + this.width / 2, this.y, 6, 10);
         }
 
         this.borderCollision();
